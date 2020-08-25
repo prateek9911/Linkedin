@@ -46,8 +46,9 @@ tabWillBeOpenedPromise
         let clickNetworkButton = findNetworkButton.click();
         return clickNetworkButton;
     })
-    .then(function () {
-        let findConnectionsBtn = await driver.wait(until.elementLocated(By.css("a[data-control-name='connections']")),10000);
+    .then(async function () {
+        //let manageTabs = await tab.findElements(swd.By.css(".administration ul li a"));
+        let findConnectionsBtn = await tab.findElement(swd.By.css("a[data-control-name='connections']"));
         //let findConnectionsBtn = tab.findElement(swd.By.css("a[data-control-name='connections']"));
         return findConnectionsBtn;
     })
@@ -57,7 +58,7 @@ tabWillBeOpenedPromise
     })
     .then(function () {
         //let ele = await driver.wait(until.elementLocated(swd.By.css('p')),10000);
-        let ulList = await tab.findElements(swd.By.css("ul"));
+        let ulList = tab.findElements(swd.By.css("ul"));
         let ulElement = tab.findElement(swd.By.xpath("//*[@id='ember543']/ul"));
         console.log(ulList);
         console.log("ULELEMNT found -- ")
